@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Ứng dụng Nghe Nhạc</string>
+  </property>
+  <property name="styleSheet">
+   <string>QMainWindow {
+    background-color: #121212;
+    color: #FFFFFF;
+    font-family: Arial, sans-serif; /* Fallback font */
+    font-size: 14px;
+}
+QPushButton {
+    background-color: transparent;
+    border: none;
+    color: #FFFFFF;
+    font-size: 24px; /* For icons */
+    min-width: 30px;
+    min-height: 30px;
+}
+QPushButton:hover {
+    opacity: 0.8;
+}
+QLabel {
+    color: #FFFFFF;
+}
+QSlider::groove:horizontal {
+    border: 1px solid #444;
+    background: #282828;
+    height: 8px;
+    border-radius: 4px;
+}
+QSlider::handle:horizontal {
+    background: #1DB954;
+    width: 15px;
+    height: 15px;
+    border-radius: 7px;
+    margin: -3px 0;
+}
+QSlider::add-page:horizontal {
+    background: #1DB954;
+    border-radius: 4px;
+}
+QSlider::sub-page:horizontal {
+    background: #282828;
+    border-radius: 4px;
+}
+QTabWidget::pane {
+    border: 1px solid #333;
+    background-color: #121212;
+}
+QTabWidget::tab-bar {
+    left: 5px;
+}
+QTabBar::tab {
+    background-color: #282828;
+    color: #B3B3B3;
+    padding: 8px 15px;
+    border: 1px solid #333;
+    border-bottom: none;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin-right: 2px;
+}
+QTabBar::tab:selected {
+    background-color: #1DB954;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+QListWidget {
+    background-color: #121212;
+    color: #FFFFFF;
+    border: none;
+}
+QListWidget::item {
+    padding: 8px 5px;
+}
+QListWidget::item:selected {
+    background-color: #333;
+}
+QLineEdit {
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: #282828;
+    color: #FFFFFF;
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QFrame" name="headerFrame">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string>QFrame#headerFrame {
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #333;
+    padding: 5px;
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QPushButton" name="menuButton">
+         <property name="text">
+          <string>☰</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="searchLineEdit">
+         <property name="placeholderText">
+          <string>Tìm kiếm bài hát, nghệ sĩ...</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="searchButton">
+         <property name="text">
+          <string>🔍</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTabWidget" name="mainTabWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="songsTab">
+       <attribute name="title">
+        <string>Bài hát</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QListWidget" name="songsListWidget">
+          <item>
+           <property name="text">
+            <string>Bài hát mẫu 1 - Nghệ sĩ A</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Bài hát mẫu 2 - Nghệ sĩ B</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Bài hát mẫu 3 - Nghệ sĩ C</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="playlistsTab">
+       <attribute name="title">
+        <string>Playlist</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QPushButton" name="newPlaylistButton">
+          <property name="styleSheet">
+           <string notr="true">QPushButton#newPlaylistButton {
+    background-color: #1DB954;
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: bold;
+    color: white;
+}</string>
+          </property>
+          <property name="text">
+           <string>+ Tạo Playlist Mới</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QListWidget" name="playlistsListWidget">
+          <item>
+           <property name="text">
+            <string>Playlist của tôi 1 (5 bài)</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Playlist yêu thích (12 bài)</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="playerFrame">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>80</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string>QFrame#playerFrame {
+    background-color: #1a1a1a;
+    border-top: 1px solid #333;
+    padding: 5px;
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="albumArtLabel">
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>60</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string>background-color: #333; border-radius: 5px;</string>
+         </property>
+         <property name="text">
+          <string>Ảnh bìa</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="songTitleLabel">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Tên bài hát đang phát</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="artistNameLabel">
+           <property name="font">
+            <font>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Tên nghệ sĩ</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_5">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <widget class="QLabel" name="currentTimeLabel">
+             <property name="text">
+              <string>0:00</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSlider" name="progressBar">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="totalTimeLabel">
+             <property name="text">
+              <string>3:30</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <item>
+            <widget class="QPushButton" name="shuffleButton">
+             <property name="text">
+              <string>🔀</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="previousButton">
+             <property name="text">
+              <string>⏮️</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="playPauseButton">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton#playPauseButton {
+    background-color: #1DB954;
+    border-radius: 20px;
+    padding: 0;
+}
+QPushButton#playPauseButton:hover {
+    background-color: #1ED760;
+}</string>
+             </property>
+             <property name="text">
+              <string>▶️</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="nextButton">
+             <property name="text">
+              <string>⏭️</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="repeatButton">
+             <property name="text">
+              <string>🔁</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
